@@ -1,7 +1,7 @@
 # 01_Aporapeiron と SILN とは
 
 *RDL-Core / Explanation / Aporapeiron と SILN / 01 / v0.2*  
-*依存：T0_基盤層（T0_基底仮設 / T0_最低動作仕様）、T1_SILN操作層*  
+*依存：T0_基盤層（T0 基底仮設（HYP） / T0 最低動作仕様（SPEC））、T1_SILN操作層*  
 *最終同期：2026-08-26*
 
 ---
