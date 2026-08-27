@@ -63,15 +63,15 @@ Aporapeiron : 切り出しても閉じ切らない側（非閉包・更新余地
 
 | 文書 | タイトル | 主な解説内容 |
 | :--- | :--- | :--- |
-| **01** | [**01_AporapeironとSILNとは.md**](file:///d:/GitHub/TEST/RDL/02_Explanation/Aporapeiron%E3%81%A8SILN/01_Aporapeiron%E3%81%A8SILN%E3%81%A8%E3%81%AF.md) | 共通導入。SILN（操作対象）、$M_B$（自己身体）、Aporapeiron（非閉包条件）の役割と対比。 |
-| **02** | [**02_関係と偏り.md**](file:///d:/GitHub/TEST/RDL/02_Explanation/Aporapeiron%E3%81%A8SILN/02_%E9%96%A2%E4%BF%82%E3%81%A8%E5%81%8F%E3%82%8A.md) | 基底。関係記述と、境界候補の手掛かりとなる偏り（ムラ）。 |
-| **03** | [**03_境界Bはどう引かれるか.md**](file:///d:/GitHub/TEST/RDL/02_Explanation/Aporapeiron%E3%81%A8SILN/03_%E5%A2%83%E7%95%8CB%E3%81%AF%E3%81%89%E3%81%86%E5%BC%95%E3%81%8B%E3%82%84%E3%82%8B%E3%81%8B.md) | 偏りと操作条件（既存 $M_B$・目的・解像度・状況）の相互作用による $B$ の仮設。 |
-| **04** | [**04_記述と離散化.md**](file:///d:/GitHub/TEST/RDL/02_Explanation/Aporapeiron%E3%81%A8SILN/04_%E8%A8%98%E8%BF%B0%E3%81%A8%E9%9B%A2%E6%95%A3%E5%8C%96.md) | 差異選択と単位化。操作対象として扱える構造の成立と文書性（$\xi_{\text{doc}}$）。 |
-| **05** | [**05_BからM_Bとξが生じる理由.md**](file:///d:/GitHub/TEST/RDL/02_Explanation/Aporapeiron%E3%81%A8SILN/05_B%E3%81%8B%E3%82%89M_B%E3%81%A8%CE%BE%E3%81%8C%E7%94%9F%E3%81%98%E3%82%8B%E7%90%86%E7%94%B1.md) | 【蝶番】有限境界 $B$ による切り出しから、自己側保持構造 $M_B$・対象側構造 SILN と $\xi$ がどう立ち上がるか。 |
-| **06** | [**06_ξ残存性.md**](file:///d:/GitHub/TEST/RDL/02_Explanation/Aporapeiron%E3%81%A8SILN/06_%CE%BE%E6%AE%8B%E5%AD%98%E6%80%A7.md) | 構造が成立しても $\xi$ が残ることの検査と、$[B\text{-}\xi]$ の高重み仮設採択。 |
-| **07** | [**07_安定と非閉包.md**](file:///d:/GitHub/TEST/RDL/02_Explanation/Aporapeiron%E3%81%A8SILN/07_%E5%AE%89%E5%AE%9A%E3%81%A8%E9%9D%9E%E9%96%89%E5%8C%85.md) | 安定と非閉包の両立（$\xi=0$ でなくても機能する）、および $\xi$ 露出時の $\Delta B$ 更新。 |
-| **08** | [**08_存在と記述道具.md**](file:///d:/GitHub/TEST/RDL/02_Explanation/Aporapeiron%E3%81%A8SILN/08_%E5%AD%98%E5%9C%A8%E3%81%A8%E8%A8%98%E8%BF%B0%E9%81%93%E5%85%B7.md) | 道具 ＝ SILN を目的に利用している機能状態。空間・時間・数・真理などの位置づけ。 |
-| **09** | [**09_SELFと自己適用.md**](file:///d:/GitHub/TEST/RDL/02_Explanation/Aporapeiron%E3%81%A8SILN/09_SELF%E3%81%A8%E8%87%AA%E5%B7%B1%E9%81%A9%E7%94%A8.md) | 自己消化：自己の $M_B(\text{RDL})$ を $\text{SILN}_{\text{SELF}}$ として食べ直す自己更新の閉じ。 |
+| **01** | [**01_AporapeironとSILNとは.md**](./01_AporapeironとSILNとは.md) | 共通導入。SILN（操作対象）、$M_B$（自己身体）、Aporapeiron（非閉包条件）の役割と対比。 |
+| **02** | [**02_関係と偏り.md**](./02_関係と偏り.md) | 基底。関係記述と、境界候補の手掛かりとなる偏り（ムラ）。 |
+| **03** | [**03_境界Bはどう引かれるか.md**](./03_境界Bはどう引かれるか.md) | 偏りと操作条件（既存 $M_B$・目的・解像度・状況）の相互作用による $B$ の仮設。 |
+| **04** | [**04_記述と離散化.md**](./04_記述と離散化.md) | 差異選択と単位化。操作対象として扱える構造の成立と文書性（$\xi_{\text{doc}}$）。 |
+| **05** | [**05_BからM_Bとξが生じる理由.md**](./05_BからM_Bとξが生じる理由.md) | 【蝶番】有限境界 $B$ による切り出しから、自己側保持構造 $M_B$・対象側構造 SILN と $\xi$ がどう立ち上がるか。 |
+| **06** | [**06_ξ残存性.md**](./06_ξ残存性.md) | 構造が成立しても $\xi$ が残ることの検査と、$[B\text{-}\xi]$ の高重み仮設採択。 |
+| **07** | [**07_安定と非閉包.md**](./07_安定と非閉包.md) | 安定と非閉包の両立（$\xi=0$ でなくても機能する）、および $\xi$ 露出時の $\Delta B$ 更新。 |
+| **08** | [**08_存在と記述道具.md**](./08_存在と記述道具.md) | 道具 ＝ SILN を目的に利用している機能状態。空間・時間・数・真理などの位置づけ。 |
+| **09** | [**09_SELFと自己適用.md**](./09_SELFと自己適用.md) | 自己消化：自己の $M_B(\text{RDL})$ を $\text{SILN}_{\text{SELF}}$ として食べ直す自己更新の閉じ。 |
 
 ---
 
