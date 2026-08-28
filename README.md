@@ -30,6 +30,8 @@ RDL_Core/
 │  └─ TD_共有語彙.md
 │
 ├─ 03_Explanation/
+│  ├─ RDL破断点考察.md
+│  ├─ RDLに対する批判予測と回答案.md
 │  ├─ AporapeironとSILN/
 │  └─ T1/
 │
@@ -147,6 +149,10 @@ Explanation
 ```
 
 仕様そのものと、その成立理由を分離することで、Core を小さく保ちながら探索経路を失わないことを目的とする。
+
+**主要な解説文書:**
+- [**RDL破断点考察**](./03_Explanation/RDL破断点考察.md)
+- [**RDLに対する批判予測と回答案**](./03_Explanation/RDLに対する批判予測と回答案.md)
 
 ---
 
