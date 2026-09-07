@@ -21,27 +21,32 @@ T-D 本体は、RDL 内部で使用する語彙の**最小定義と身分**を�
 | :--- | :--- | :--- | :--- |
 | **$B$** | 有限境界（Finite Boundary） | Core Primitive | 観測・認識・記述・操作を行うための有限な選択枠組み。対象、尺度、語彙、差異、評価関数、用途、観測者等を含みうる。 |
 | **$\xi$** | 未回収関係（Residual Relation） | Core Primitive | 有限境界 $B$ による切り出しで回収されない関係。$[B\text{-}\xi]: \forall B_{\text{finite}},\ \xi(B) \neq 0$。 |
-| **$M_B$** | 整合慣性（Consistency Inertia） | Core Primitive | 現在の境界 $B$ の内部で自己側に保持され、解釈・予測・応答を形成する整合構造（現在の身体）。 |
+| **$M_B$** | 有限関係拘束構造（Finite Relational Constraint Structure） | Core Primitive | 現在の境界 $B$ のもとで自己側に一時的に保持され、解釈・予測・応答を拘束する有限整合構造（現在の身体）。関係拘束強度の時間・更新抵抗断面を「整合慣性 $I(M_B)$」と呼ぶ。 |
 | **$EFP$** | 素流圧（Elementary Flux Pressure） | Core Primitive | $M_B$ へ作用する未解釈の作用束。直接取得できることは前提としない。 |
 | **$F$** | 作用解釈（Flux Interpretation） | Core Primitive | $EFP$ が現在の $M_B$ を通して解釈された作用情報。 |
-| **$E$** | 慣性誤差（Inertial Error） | Core Primitive | 新たに得られた $F$ と既存 $M_B$ による予期・慣性投影との不整合。最低要件は差異を検出できること。 |
-| **$H$** | 熱・誤差蓄積（Accumulated Heat） | Core Primitive | $E$ が時間的・構造的に残存・蓄積・伝播した状態。瞬間的差異と継続的・構造的不整合を区別するために用いる。 |
-| **$\theta$** | 判定境界（Decision Boundary / Threshold） | Core Primitive | 現在の $M_B$ を維持する更新と、構造再編へ移行する更新を分ける判定境界。具体的算出法は固定しない。 |
+| **$E$** | 不整合（Mismatch / Discrepancy） | Core Primitive | 新たに得られた後続作用解釈 $F'$ と、更新前の同一 $M_B$ による解釈・予期 $F$ との不整合（旧称：慣性誤差）。最低要件は差異を検出できること。 |
+| **$H$** | 熱・未解消残存不整合（Accumulated Residual Heat） | Core Primitive | $E$ のうち、現在の $M_B$ によって吸収・局所解消されず時間的・構造的に残存・蓄積・伝播した状態（$H_{vec} = P_{unresolved}(\delta M_B(t)),\ H = \|H_{vec}\|$）。 |
+| **$\theta$** | 保持限界（Retention Limit / Threshold） | Core Primitive | 現在の $M_B$ が未解消不整合 $H$ を内部で保持・吸収し続けられる限界値（判定境界）。$H < \theta$ では巡航維持・局所更新が行われ、$H \ge \theta$ で再編相 $M_\Delta$ へ移行する。 |
+| **$I(M_B)$** | 整合慣性（Consistency Inertia） | Standard Model | 関係拘束強度の時間・更新抵抗断面。既存の解釈・更新経路への拘束の強さを表す。従来の $\|M_B\|$ や `inertia()` との後方互換経路。 |
 | **$\mathcal{K}$** | 関係保存量（Relational Invariant） | Standard Model | 境界 $B$ の内部で、対象とする変化範囲において局所的・近似的に不変として扱う関係量。Core Primitive ではない。 |
-| **$\theta_{\text{eff}}$** | 実効判定境界（Effective Threshold） | Standard Model | 局所条件や $\xi$ 等による変動を含めた有効な判定境界。Core Requirement ではなく標準モデル側の表記。 |
+| **$\theta_{\text{eff}}$** | 実効保持限界（Effective Threshold） | Standard Model | 局所条件や $\xi$ 等による変動を含めた有効な保持限界。Core Requirement ではなく標準モデル側の表記。 |
 
 ### 1.1 標準表記・標準モデル参照
 
 以下は T0 SPEC で使用される標準形の例であり、上記語彙の唯一の定義ではない。
 
 ```text
-F = interp(M_B, EFP)
+F(t)    = interp(M_B, EFP(t))
+F'(t+Δ) = interp(M_B, EFP(t+Δ))
 
-E(t) = F(t+Δ) - M_B·F(t)        # 標準 E の一例
+E(t+Δ)  = Δ(F, F')               # 不整合 E
 
-θ_eff(t) = θ + g(ξ(t))          # 標準 θ_eff の一例
+H = ||H_vec||                    # 未解消残存不整合状態
+H_vec = P_unresolved(δM_B(t))
 
-dM_B/dt = f(M_B, E, ξ)          # 連続時間更新の標準形の一例
+θ_eff(t) = θ + g(ξ(t))           # 標準 θ_eff の一例
+
+dM_B/dt = f(M_B, E, ξ)           # 連続時間更新の標準形の一例
 ```
 
 $\mathcal{K}$ の具体形を含む局所近似式も Standard Model 側に属し、T-D の最小定義には含めない。
@@ -57,7 +62,7 @@ $\mathcal{K}$ の具体形を含む局所近似式も Standard Model 側に属�
 | **SILN** | SILN（対象構造・食材） | *Survival-biased Integration of Local Linear approximations in a Nonlinear Network*。<br>有限境界 $B$ のもとで、RDL 操作の対象としてひとまとまりに切り出された関係構造の身分。 |
 | **SILN展開** | SILN展開（旧称：SILN分解） | 対象の関係・状態・係数・$\xi$ の可能性空間を RDL 内部で操作可能な形へ広げ・開く操作（T1 探索・生成側）。 |
 | **検査と選別** | 検査と選別（絞り込み） | 統計・実験・シミュレーション・耐久検査等の多様な手段で候補を評価し、適合構造を局所的に絞り込む操作（T1 評価・選択側）。 |
-| **再構成** | 再構成（血肉化・合成） | 選別された残存構造を、新安定相 $M_B'$ として自己側の整合構造へ定着・血肉化させる操作（T1 定着・合成側）。 |
+| **再構成** | 再構成（血肉化・合成） | 選別された残存構造を、新安定相 $M_B'$ として自己側の有限関係拘束構造へ定着・血肉化させる操作（T1 定着・合成側）。 |
 | **SILN耐久検査** | SILN耐久検査（旧称：構造破壊学） | 負荷・条件変化を与えて破断条件・有効範囲・残存構造を同定し、再構成へ渡すためのストレステスト機構（T2）。 |
 | **$[SELF]$** | 自己例外化禁止 | $RDL \in \text{dom}(RDL)$。RDL 自身も例外化せず、通常の SILN 操作・検査・再構成の対象とする基底規則。 |
 | **$[B\text{-}\xi]$** | $B$-$\xi$ 性質 | $\xi$ は後付けのノイズではなく、有限な境界 $B$ を持つことそのものに伴う不可避の性質。 |
@@ -85,10 +90,10 @@ Aporapeiron は SILN の「外側の場所」や「こぼれた残り」を指�
 
 | ラベル | 相名称 | 状態の説明 |
 | :--- | :--- | :--- |
-| **$M_{\text{act}}$** | 活性相 | 現在強く機能している関係断面。 |
+| **$M_{\text{act}}$** | 活性相 | 現在強く機能している関係拘束断面。 |
 | **$M_{\text{lat}}$** | 潜在相 | まだ発現していない未拘束断面。 |
-| **$M_\Delta$** | 再編相 | 判定条件を越え、慣性が外れて構造が変化している途中の不安定相。具体的な遷移条件は Standard Model に依存する。 |
-| **$M_B'$** | 再編後安定相 | 更新・再編を経て新たに安定した整合慣性。$B$ 依存であり、$\xi$ を暗黙継承する。 |
+| **$M_\Delta$** | 拘束解放・再編相 | 保持限界（$H \ge \theta$）を越え、既存の拘束から外れ、新しい拘束配置がまだ安定していない途中の相。具体的な遷移・受渡・復帰条件は T0 SPEC で定め、相内の探索・代謝は T1 で行う。 |
+| **$M_B'$** | 再拘束新安定相 | 更新・再編・選別・再構成を経て新たに拘束された安定構造。$B$ 依存であり、$\xi$ を暗黙継承する。 |
 
 ---
 
@@ -125,6 +130,7 @@ Aporapeiron は SILN の「外側の場所」や「こぼれた残り」を指�
 
 ---
 
+*v2.0（関係拘束改定版）：$M_B$ を「有限関係拘束構造」に再定義し、整合慣性を時間・更新抵抗断面 $I(M_B)$ として位置づけ。$E$ を「不整合」へ純化、$H$ を「未吸収残存不整合状態」へ精緻化、$\theta$ を「保持限界」と再解釈。相状態 $M_\Delta$ を「拘束解放・再編相」、$M_B'$ を「再拘束新安定相」へ整理。*
 *v0.9：自然言語概念のRDL的翻訳を別冊 `TD_自然言語概念のRDL的翻訳.md` へ分離。T-D 本体を RDL 内部語彙の最小辞書として再整理し、■5 は別冊参照節へ変更。*
 *v0.8：自然言語概念の章を「RDL的翻訳」へ再編。偏りから翻訳される概念として「意味・無意味・価値・意義」を追加し、偏りの勾配／勾配の束を説明的表現として位置づけた。既存の確定化しやすい語は 5.2 へ移動。*
 *v0.7：Aporapeiron を SILN の対概念・$\xi$ の別名として読める定義から外し、「有限構造が $\xi$ を伴って形成・検査・破断・再構成され続ける非終端的な関係運動」へ同期。Aporapeiron Stance、SILN、LEGACY 対応を更新。主要記号を Core Primitive / Standard Model に分け、T0 SPEC の Core Requirement と Standard Model の分離へ同期。*
