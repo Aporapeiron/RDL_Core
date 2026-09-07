@@ -21,7 +21,7 @@ T-D 本体は、RDL 内部で使用する語彙の**最小定義と身分**を�
 | :--- | :--- | :--- | :--- |
 | **$B$** | 有限境界（Finite Boundary） | Core Primitive | 観測・認識・記述・操作を行うための有限な選択枠組み。対象、尺度、語彙、差異、評価関数、用途、観測者等を含みうる。 |
 | **$\xi$** | 未回収関係（Residual Relation） | Core Primitive | 有限境界 $B$ による切り出しで回収されない関係。$[B\text{-}\xi]: \forall B_{\text{finite}},\ \xi(B) \neq 0$。 |
-| **$M_B$** | 有限関係拘束構造（Finite Relational Constraint Structure） | Core Primitive | 現在の境界 $B$ のもとで自己側に一時的に保持され、解釈・予測・応答を拘束する有限整合構造（現在の身体）。関係拘束強度の時間・更新抵抗断面を「整合慣性 $I(M_B)$」と呼ぶ。 |
+| **$M_B$** | 有限関係拘束構造（Finite Relational Constraint Structure） | Core Primitive | 現在の境界 $B$ のもとで自己側に一時的に保持され、解釈・予測・選択・応答・更新を拘束する自己側の有限構造（現在の身体）。関係拘束強度の時間・更新抵抗断面を「整合慣性 $I(M_B)$」と呼ぶ。 |
 | **$EFP$** | 素流圧（Elementary Flux Pressure） | Core Primitive | $M_B$ へ作用する未解釈の作用束。直接取得できることは前提としない。 |
 | **$F$** | 作用解釈（Flux Interpretation） | Core Primitive | $EFP$ が現在の $M_B$ を通して解釈された作用情報。 |
 | **$E$** | 不整合（Mismatch / Discrepancy） | Core Primitive | 新たに得られた後続作用解釈 $F'$ と、更新前の同一 $M_B$ による解釈・予期 $F$ との不整合（旧称：慣性誤差）。最低要件は差異を検出できること。 |
