@@ -1,8 +1,8 @@
 # TD_共有語彙
 
-*T-D：共有語彙層 / DICT / DRAFT v1.0*  
+*T-D：共有語彙層 / DICT / DRAFT v1.1*\
 *依存：全層から参照される独立語彙層*  
-*同期基準：T0 BASE / SPEC v2.3（SILN基底化・RIB導入）*
+*同期基準：T0 BASE v2.3.1 / SPEC v2.5（Eの名称を「差」へ中立化）*
 
 ---
 
@@ -40,16 +40,18 @@ RDL が通常直接操作するのは、すべての RIB や関係ネットワ�
 | **`RIB_B`** | 有限作用断面 | Core Section | 一つ以上の RIB を、用途・問いに応じた $B$、観測位置、時間断面、対象方向などから選択・切り出して構成した未解釈の有限作用断面。通常運転で $M_B$ が直接解釈する単位。 |
 | **$F$** | 作用解釈・予測（Interaction Interpretation / Prediction） | Core State | `RIB_B` が現在の $M_B$ を通して解釈され、現在構造から形成された作用情報・予測。 |
 | **$F'$** | 後続作用解釈 | Core State | 後続する `RIB_B'` を、更新前の同一 $M_B$ が解釈して形成した次の作用情報。元となる後続 RIB 群は先行相互作用の影響を含んでよい。 |
-| **$E$** | 不整合（Mismatch / Discrepancy） | Core State | 現在構造から形成された予測 $F$ と、後続作用断面から形成された $F'$ との差異。世界そのものと内部表象との差ではない。 |
-| **$H$** | 熱・未解消残存不整合（Accumulated Residual Heat） | Core State | $E$ のうち、現在の $M_B$ によって吸収・局所解消されず時間的・構造的に残存・蓄積・伝播した状態（$H_{vec} = P_{unresolved}(\delta M_B(t)),\ H = \|H_{vec}\|$）。 |
-| **$\theta$** | 保持限界（Retention Limit / Threshold） | Core Boundary | 現在の $M_B$ が未解消不整合 $H$ を内部で保持・吸収し続けられる限界値（判定境界）。$H < \theta$ では巡航維持・局所更新が行われ、$H \ge \theta$ で再編相 $M_\Delta$ へ移行する。 |
+| **$E$** | 差（Difference） | Core State | 比較条件をそろえ、$F$ が含む予測と、同じ更新前の $M_B$ により後続作用断面から形成された $F'$ との間で検出する差。差自体に良否・快不快の評価を含めず、世界そのものと内部表象との差とも同一視しない。 |
+| **$H$** | 熱・未解消の差の残存・蓄積（Accumulated Residual Heat） | Core State | $E$ のうち、現在の $M_B$ によって吸収・局所解消されず時間的・構造的に残存・蓄積・伝播した状態（$H_{vec} = P_{unresolved}(\delta M_B(t)),\ H = \|H_{vec}\|$）。 |
+| **$\theta$** | 保持限界（Retention Limit / Threshold） | Core Boundary | 現在の $M_B$ が、未解消の差の残存状態 $H$ を内部で保持・吸収し続けられる限界値（判定境界）。$H < \theta$ では巡航維持・局所更新が行われ、$H \ge \theta$ で再編相 $M_\Delta$ へ移行する。 |
 | **$I(M_B)$** | 整合慣性（Consistency Inertia） | Standard Model | 関係拘束強度の時間・更新抵抗断面。既存の解釈・更新経路への拘束の強さを表す。従来の $\|M_B\|$ や `inertia()` との後方互換経路。 |
 | **$\mathcal{K}$** | 関係保存量（Relational Invariant） | Standard Model | 境界 $B$ の内部で、対象とする変化範囲において局所的・近似的に不変として扱う関係量。Core Primitive ではない。 |
 | **$\theta_{\text{eff}}$** | 実効保持限界（Effective Threshold） | Standard Model | 局所条件や $\xi$ 等による変動を含めた有効な保持限界。Core Requirement ではなく標準モデル側の表記。 |
 
+`E` の名称を「差」としても、比較対象・用途・問い・$B$・時点・比較次元を明示する条件は維持する。「差分」は説明語、「予測差」は具体的な比較の説明として用いてよい。未観測や比較不能を差の値へ置換せず、意味・評価・応答は各系で定める（[SPEC §2.1](<../00_T0_基盤層/T0最低動作仕様 (SPEC).md#21-差-e-の名称と適用範囲>)）。
+
 ### 1.1 標準表記・標準モデル参照
 
-以下は T0 SPEC v2.3 で使用される標準形の例であり、上記語彙の唯一の定義ではない。
+以下は T0 SPEC v2.5 で使用される標準形の例であり、上記語彙の唯一の定義ではない。
 
 ```text
 RIB_B(t)     = Section_B({RIB_i(t)})
@@ -151,6 +153,7 @@ Aporapeiron は SILN の「外側の場所」や「こぼれた残り」を指�
 
 | 旧概念（LEGACY） | 新体系での位置づけ・移行先 |
 | :--- | :--- |
+| **E：慣性誤差 / 不整合（Mismatch / Discrepancy）** | 共通名称を **差（Difference）** へ変更。同じ更新前の $M_B$ による $F / F'$ の比較条件を維持し、負の評価や特定の応答を名称へ含めない。 |
 | **EFP / 素流圧（Elementary Flux Pressure）** | **廃止**。場側・関係ネットワーク上の相互作用束は `RIB`（Relational Interaction Bundle）、用途・問いに応じて $B$ から切り出された有限作用断面は `RIB_B` として分離する。 |
 | **B_EFP / EFP を作用断面とする表記** | **`RIB_B` へ統合**。`RIB_B = Section_B({RIB_i})` を標準形とする。 |
 | **SILN＝対象構造・食材** | **SILN＝基底構造**へ上位化。「食材」は T1 の説明比喩として必要な場合に限って使用し、SILN の定義上の身分にはしない。 |
@@ -165,6 +168,7 @@ Aporapeiron は SILN の「外側の場所」や「こぼれた残り」を指�
 
 ---
 
+*v1.1（Eの名称同期、2026-09-27）：SPEC v2.5に合わせ、Eを「差（Difference）」、Hを未解消の差の残存・蓄積として表記。比較条件と意味・評価・応答の区別を明記し、旧名称の移行先をLEGACYへ追加。標準式は維持。*\
 *v1.0（SILN基底化・RIB同期版）：T0 BASE / SPEC v2.3 に同期。SILN を対象側の「食材」から RDL の基底構造へ再配置。EFP / 素流圧を廃止し、RIB（Relational Interaction Bundle）と RIB_B（有限作用断面）を導入。M_B と RIB_B を構造側／相互作用側の B 依存断面として整理し、標準式を `RIB_B = Section_B({RIB_i})`、`F = interp(M_B, RIB_B)` へ更新。LEGACY に EFP / B_EFP の移行先を追加。*  
 *v0.9：自然言語概念のRDL的翻訳を別冊 `TD_自然言語概念のRDL的翻訳.md` へ分離。T-D 本体を RDL 内部語彙の最小辞書として再整理し、■5 は別冊参照節へ変更。*  
 *v0.8：自然言語概念の章を「RDL的翻訳」へ再編。偏りから翻訳される概念として「意味・無意味・価値・意義」を追加し、偏りの勾配／勾配の束を説明的表現として位置づけた。既存の確定化しやすい語は 5.2 へ移動。*  
